@@ -66,6 +66,7 @@ pub fn configure_libffi(prefix: PathBuf, build_dir: &Path) {
             // Everything else should be fine to pass straight through
             other => other,
         };
+        println!("detected cross-compile: {} != {}", target, host);
         command.arg(format!("--host={}", cross_host));
     }
 
@@ -93,6 +94,7 @@ pub fn configure_libffi(prefix: PathBuf, build_dir: &Path) {
     command.env("CFLAGS", cflags);
 
     for (k, v) in c_compiler.env().iter() {
+        println!("compiler env: {}={}", k, v);
         command.env(k, v);
     }
 
