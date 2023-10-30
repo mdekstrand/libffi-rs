@@ -122,5 +122,6 @@ pub fn configure_libffi(prefix: PathBuf, build_dir: &Path) {
         command.arg("--prefix").arg(prefix);
     }
 
+    println!("invoking: {:?}", &command);
     run_command("Configuring libffi", &mut command);
 }
